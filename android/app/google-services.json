@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "729551426293",
+    "project_id": "engmobile-8d287",
+    "storage_bucket": "engmobile-8d287.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729551426293:android:547c34ba740959f9f2ebbc",
+        "android_client_info": {
+          "package_name": "com.EngLive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729551426293-81huloe5jubsdm3vomen1dt126s397vt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.EngLive",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "729551426293-9bf5b8nca5iqsnefo2neocrc0o56i5f6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4QhXmvUMOpMhwZM_8Jz1FlmYBdW5vxhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729551426293-9bf5b8nca5iqsnefo2neocrc0o56i5f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

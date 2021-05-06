@@ -1,0 +1,23 @@
+-User likes-
+
+For DB 
+1.Check if the user has liked the post.
+2. If he is then fetch it from db and display the full heart.
+3. Else display the outlined heart
+
+1. Update the db value
+2. Set a react state.
+3.render the heart accordingly  
+
+you have to somehow show the user is liked a post even after he logs out 
+if the loggedin user has already liked the post then show the full heart else the outlined one.
+
+
+-adding comments-
+1. user typing the comments
+2. Getting the comment from the input field
+3. Store it in db
+4. Display it accordingly
+
+
+==Not being able to show the individual details for each comment===
