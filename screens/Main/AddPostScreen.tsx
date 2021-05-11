@@ -183,17 +183,7 @@ const AddPostScreen = () => {
                 userId: 'testID',
                 
             }],
-            // comments: [{
-
-            //     [firestore.Timestamp.fromDate(new Date())] : {
-            //         userName: 'testUser',
-            //         userImage: 'https://media.istockphoto.com/photos/happy-smiling-man-looking-away-picture-id1158245623?k=6&m=1158245623&s=612x612&w=0&h=y0LbpRFMHMj_9YC_kpKvLYcijEunxP27KyjXBrDHcFg=',
-            //         comment: 'testComment',
-            //         likes: 12,
-            //     }
-           
-                
-            // }],
+            comments: [],
         })
         .then(() => {
             console.log('Post is added!');

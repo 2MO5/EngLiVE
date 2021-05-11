@@ -21,3 +21,11 @@ if the loggedin user has already liked the post then show the full heart else th
 
 
 ==Not being able to show the individual details for each comment===
+
+==loading comment likes when the user comes in to the postdisplay screen==
+
+1. Locate the comment section
+2. Fetch all the comments and likes
+3. Check if the user has liked; check for each comment. Same for likes
+4. If liked set a state for true else false.
+ 

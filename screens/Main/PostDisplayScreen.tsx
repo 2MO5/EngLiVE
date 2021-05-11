@@ -31,7 +31,7 @@ const PostDisplayScreen = ({ route }) => {
 
     console.log('Required: ', route.params);
 
-
+    const [isLoaded, setIsLoaded] = useState(false);
     const [theContent, setTheContent] = useState({});
 
     const [fontReady, setFontReady] = useState(false);
@@ -75,6 +75,7 @@ const PostDisplayScreen = ({ route }) => {
         let started = true;
 
         showingTheLike();
+        setIsLoaded(true);
 
 
         console.log(isLiked);
@@ -383,31 +384,74 @@ const PostDisplayScreen = ({ route }) => {
         }
     }
 
-    const codeGen = () => {
+    const codeGen = async () => {
+
+        let commentsNumber: number;
+
+        await firestore()
+            .collection('posts')
+            .doc(id)
+            .get()
+            .then(documentSnapshot => {
+                let { comments } = documentSnapshot.data();
+
+                commentsNumber = comments.length + 1;
+
+                console.log('@397 length: ', commentsNumber);
+            })
+
 
 
         const b = Math.floor(Math.random() * 130);
         const a = Math.floor(Math.random() * 11);
-
+        const i = Math.floor(Math.random() * 21);
+        const k = Math.floor(Math.random() * 35);
+        let r = Math.floor(Math.random() * 5);
         const c = a + b;
 
+        let j, n;
+
+        if (i > a && r < 3) {
+            j = i - a + r;
+        } else {
+
+            j = a - i + r;
+        }
+
+
+
+
+        if (k > 25) {
+
+            n = k;
+
+        } else {
+            n = 25;
+        }
 
         const characters = '*$#@_+AFOjd123GHI<JKL?>M|"NOPQoaRSTUVqWX!@#$BCDaaassss343434+_#Jdsdu6t7yg3h43edxsd812382uieshwq378927302392:deiurye(*$#@ndsdthjHUWEWNhdstKKUUpooTKHHE!@#$%^&*YZ__120a(bcdefghijklmnopqrstuvwxyz#!@#_#@#@++?)></';
         const number = '0123456789';
+        const C = 'C';
+        const theLength = commentsNumber.toString();
 
 
 
         const stringValue1 = characters.substr(a, b); //
         const stringValue2 = characters.substr(a, c);
-        const stringValue3 = number.substr(0, a);
+        const stringValue3 = characters.substr(0, j);
 
         const bFinal = stringValue2.concat(stringValue1);
         const b1Final = stringValue3.concat(stringValue2);
 
+        const index = C.concat(theLength);
         const theFinal = bFinal.concat(b1Final);
 
-        finalValue = theFinal.substr(a, c);
+        finalValue = theFinal.substr(r, n);
 
+        finalValue = index.concat(finalValue);
+
+        console.log('@431: r is ', r, ' and n is ', n);
+        console.log('@431 stringValue: ', finalValue);
         console.log('@379 stringValue: ', finalValue);
 
         return finalValue;
@@ -509,6 +553,7 @@ const PostDisplayScreen = ({ route }) => {
 
         console.log('State variable commentsList : ', commentListAll);
     }
+
 
     return (
 
@@ -615,6 +660,7 @@ const PostDisplayScreen = ({ route }) => {
                                                 comments={item}
                                                 //user={item.user}
                                                 id={id}
+                                                state={isLoaded}
 
                                             />
 
