@@ -219,58 +219,21 @@ function ProfileNavigator() {
     </ProfileStack.Navigator>
   );
 }
-// const AddPostStack = createStackNavigator<AddPostNavigatorParamList>();
-
-// function AddPostNavigator() {
-
-
-//   return (
-//     <AddPostStack.Navigator>
-//       <AddPostStack.Screen
-//         name="AddPost"
-//         component={AddPostScreen}
-//         options={{
-//           headerShown: false,
-
-//         }}
-//       />
-//     </AddPostStack.Navigator>
-//   );
-// }
-// const PostDisplayStack = createStackNavigator<PostDisplayNavigatorParamList>();
-
-// function PostDisplayNavigator() {
-//   return (
-//     <PostDisplayStack.Navigator>
-//       <PostDisplayStack.Screen
-//         name="PostDisplay"
-//         component={PostDisplayScreen}
-//         options={{
-//           headerShown: false,
-
-//         }}
-//       // initialParams={post.id}
-//       />
-
-//     </PostDisplayStack.Navigator>
-//   );
-// }
-
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={MainStack} />
-      <Stack.Screen name="NewPost" component={AddPostNavigator} />
-      <Stack.Screen name="ShowPost" component={PostDisplayNavigator} />
+// function RootNavigator() {
+//   return (
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="Root" component={MainStack} />
+//       <Stack.Screen name="NewPost" component={AddPostNavigator} />
+//       <Stack.Screen name="ShowPost" component={PostDisplayNavigator} />
 
-    </Stack.Navigator>
+//     </Stack.Navigator>
 
-    //     <AuthProvider>
-    //       <Routes />
-    //     </AuthProvider>
+//     //     <AuthProvider>
+//     //       <Routes />
+//     //     </AuthProvider>
 
-  );
-}
+//   );
+// }
