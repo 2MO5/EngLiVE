@@ -23,7 +23,7 @@ const NewPostButton = () => {
             <Image
 
 
-                source={require('../../assets/images/postBtn.png')}
+                source={require('../../assets/images/btnAdd.png')}
 
             />
 
@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
 
     postBtn: {
         position: 'relative',
-        bottom: '-160%',
-        right: '-70%',
+        bottom: '54%',
+        right: '-65%',
         zIndex: 400000
+
 
 
     }

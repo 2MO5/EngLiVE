@@ -125,7 +125,7 @@ const AddPostScreen = () => {
             setImage(imageURI);
         }).catch((error) => {
             console.log( 'This error occurred: ', error);
-            Alert.alert('Why did you cancel it? ');
+            Alert.alert('Post wasn not published ');
         });  
     }
     const fromGallery = () => {
@@ -141,7 +141,7 @@ const AddPostScreen = () => {
             setImage(imageURI);
         }).catch((error) => {
             console.log( 'This error occurred: ', error);
-            Alert.alert('Why did you cancel it? ');
+            Alert.alert('Post wasn not published ');
         });
     }
     const loadingTheUser = async () => {
@@ -295,7 +295,7 @@ const AddPostScreen = () => {
 
                 {(image == null && !uploading) ? (
                    <Image
-                   source={require('../Main/assets/design-addpost.png')}
+                   source={require('../Main/assets/design-addpost2.png')}
                    style={styles.design}
                />
                 ) : (
@@ -322,10 +322,10 @@ const AddPostScreen = () => {
                                         >
                                             <LinearGradient
                                                 // Background Linear Gradient
-                                                colors={['#31CDAE', '#60C3FF']}
+                                                colors={['#68571B', '#F8D455']}
                                                 style={styles.backgroundSecondary}
                                             >
-                                                <Ionicons name="ios-camera-outline" size={20} color="#fff" />
+                                                <Ionicons name="ios-camera-outline" size={20} color="#ececcf" />
                                             </LinearGradient>
     
                                         </View>
@@ -343,10 +343,10 @@ const AddPostScreen = () => {
                                         <View style={styles.btnSecondaryImage}>
                                             <LinearGradient
                                                 // Background Linear Gradient
-                                                colors={['#31CDAE', '#60C3FF']}
+                                                colors={['#68571B', '#F8D455']}
                                                 style={styles.backgroundSecondary}
                                             >
-                                                <MaterialIcons name="image-search" size={20} color="#fff" />
+                                                <MaterialIcons name="image-search" size={20} color="#ececcf" />
                                             </LinearGradient>
     
                                         </View>
@@ -362,12 +362,12 @@ const AddPostScreen = () => {
                                     <TouchableHighlight onPress={addImage} underlayColor="#f4f4f4">
                                         <LinearGradient
                                             // Background Linear Gradient
-                                            colors={['#5574F7', '#60C3FF']}
+                                            colors={['#6A5B23', '#D2C6C6']}
                                             style={styles.background}
                                         >
     
                                             <Animated.View style={{ transform: [{ rotate: rotation }] }}>
-                                                <Ionicons name="add" size={25} color="#fff" />
+                                                <Ionicons name="add" size={25} color="#473a3a" />
                                             </Animated.View>
     
                                         </LinearGradient>
@@ -393,7 +393,7 @@ const AddPostScreen = () => {
                                         >
                                             <LinearGradient
                                                 // Background Linear Gradient
-                                                colors={['#31CDAE', '#60C3FF']}
+                                                colors={['#68571B', '#F8D455']}
                                                 style={styles.backgroundSecondary}
                                             >
                                                 <Ionicons name="ios-camera-outline" size={20} color="#fff" />
@@ -414,10 +414,10 @@ const AddPostScreen = () => {
                                         <View style={styles.btnSecondaryImage}>
                                             <LinearGradient
                                                 // Background Linear Gradient
-                                                colors={['#31CDAE', '#60C3FF']}
+                                                colors={['#68571B', '#F8D455']}
                                                 style={styles.backgroundSecondary}
                                             >
-                                                <MaterialIcons name="image-search" size={20} color="#fff" />
+                                                <MaterialIcons name="image-search" size={20} color="#ececcf" />
                                             </LinearGradient>
     
                                         </View>
@@ -433,12 +433,12 @@ const AddPostScreen = () => {
                                     <TouchableHighlight onPress={addImage} underlayColor="#f4f4f4">
                                         <LinearGradient
                                             // Background Linear Gradient
-                                            colors={['#5574F7', '#60C3FF']}
+                                            colors={['#3b2f02', '#CCB460']}
                                             style={styles.background}
                                         >
     
                                             <Animated.View style={{ transform: [{ rotate: rotation }] }}>
-                                                <Ionicons name="add" size={25} color="#fff" />
+                                                <Ionicons name="add" size={25} color="#ececcf" />
                                             </Animated.View>
     
                                         </LinearGradient>
@@ -477,7 +477,7 @@ const AddPostScreen = () => {
                             <TextInput
                             style={styles.textInput}
                             placeholder="What's on your mind?"
-                            placeholderTextColor={'#1d0fe4'}
+                            placeholderTextColor={'#816a04'}
                             multiline={true}
                             value={post}
                             onChangeText={(theInput: any) => setPost(theInput)}
@@ -500,11 +500,11 @@ const AddPostScreen = () => {
             {
                 uploading ? (
                     <View style={styles.spinner}>
-                        <MaterialIndicator color='#4ec2f0' size={230} />
+                        <MaterialIndicator color='#af9f0a' size={230} />
                         <View style={styles.btmProgress}>
                      
                             <Text style={styles.txtTransfer}> {transfered}% of your image is uploaded! </Text>
-                            <DotIndicator color='#97d9f7' size={5} />
+                            <DotIndicator color='#737505' size={5} />
                        </View>
                     </View>
                 ) : (
@@ -527,7 +527,7 @@ const AddPostScreen = () => {
                         >
 
                             <Image
-                                source={require('../Main/assets/postBtn1.png')}
+                                source={require('../Main/assets/postBtn.png')}
 
                             />
                         </TouchableOpacity>
@@ -592,7 +592,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red',
 
         position: 'absolute',
-        bottom: 121,
+        bottom: 101,
         left: '-55%',
 
 
@@ -639,7 +639,9 @@ const styles = StyleSheet.create({
         right: '-32%',
         bottom: '-20%',
         marginTop: '15%',
-        marginBottom: -132
+        marginBottom: -132,
+
+        color: '#695f04'
 
     },
 

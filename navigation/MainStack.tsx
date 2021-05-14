@@ -19,7 +19,16 @@ import FeedDisplayScreen from '../components/Feed'
 import { AddPostNavigatorParamList, BottomTabParamList, RootStackParamList, HomeNavigatorParamList, MessageNavigatorParamList, NotificationNavigatorParamList, ProfileNavigatorParamList, TabTwoParamList, PostDisplayNavigatorParamList } from '../types';
 import { Notifications } from 'expo';
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
+import { Image, StyleSheet } from 'react-native';
 
+import home from '../screens/Main/assets/home.png';
+import homeF from '../screens/Main/assets/homeF.png';
+import notification from '../screens/Main/assets/notification.png';
+import notificationF from '../screens/Main/assets/notificationF.png';
+import user from '../screens/Main/assets/user.png';
+import userF from '../screens/Main/assets/userF.png';
+
+let image: any;
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 //Identical ones should go with the same stack
@@ -33,6 +42,20 @@ export default function MainStack() {
 
   const colorScheme = useColorScheme();
 
+  // const tabBarImage = () => {
+
+  //   tabBarIcon: ({ color, focused }) => {
+  //     image = focused
+
+  //       ? require('../screens/Main/assets/home.png')
+  //       : require('../screens/Main/assets/homeF.png')
+
+  //   }
+
+
+
+
+  // }
 
 
   return (
@@ -43,28 +66,87 @@ export default function MainStack() {
         activeTintColor: Colors[colorScheme].tint,
         showLabel: false,
 
+        style: {
+          position: "absolute",
+          bottom: 10,
+          right: 20,
+          left: 20,
+          paddingLeft: 40,
+          paddingRight: 40,
+          height: 70,
+          borderRadius: 15,
+          backgroundColor: '#F8F9FA',
+          ...styles.theShadows
+        }
+
       }}>
 
       <BottomTab.Screen
         name="Home"
         component={HomeNavigator}
+        // options={{
+        //   tabBarIcon: ({ color, }) => <Octicons name="home" size={30} color={color} />,
+        // }}
         options={{
-          tabBarIcon: ({ color }) => <Octicons name="home" size={30} color={color} />,
+          tabBarIcon: ({ focused }) => {
+
+
+
+            return (
+
+              focused ? (
+                <Image
+                  source={homeF}
+                />
+              ) : (
+                <Image
+                  source={home}
+                />
+              )
+
+
+            )
+          }
+
+
+
         }}
+
+      // options={{
+      //   tabBarIcon: <Image source={home} />
+      // }}
+
+
+
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Messages"
         component={MessageNavigator}
         options={{
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="message-outline" size={28} color={color} />,
         }}
-      />
+      /> */}
 
       <BottomTab.Screen
         name="Notifications"
         component={NotifcationNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="notifications-outline" color={color} />,
+          tabBarIcon: ({ focused }) => {
+
+            return (
+              focused ? (
+
+                <Image
+                  source={notificationF}
+                />
+
+              ) : (
+                <Image
+                  source={notification}
+                />
+              )
+            )
+          },
         }}
       />
 
@@ -73,7 +155,23 @@ export default function MainStack() {
         name="User"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Feather name="user" size={30} color={color} />,
+          tabBarIcon: ({ focused }) => {
+
+            return (
+
+              focused ? (
+                <Image
+                  source={userF}
+                />
+              ) : (
+                <Image
+                  source={user}
+                />
+              )
+            );
+
+
+          },
         }}
       />
 
@@ -237,3 +335,18 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 //   );
 // }
+
+
+const styles = StyleSheet.create({
+
+  theShadows: {
+    shadowColor: '#68571B',
+    shadowOffset: {
+      width: 0,
+      height: 210,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 23.5,
+    elevation: 29,
+  }
+})

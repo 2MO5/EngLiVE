@@ -36,15 +36,15 @@ export default ProfilePicture;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'transparent',
-        borderColor: '#52C083',
-        borderWidth: 1.5,
+        borderColor: '#F8F23E',
+        borderWidth: 1.2,
         width: 40,
         height: '100%',
         zIndex: 10,
         borderRadius: 500,
 
         paddingLeft: 1,
-        marginRight: 2.5
+        marginRight: 3.5
     },
 
     img: {

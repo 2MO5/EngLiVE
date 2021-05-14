@@ -93,7 +93,7 @@ const CommunityScreen = () => {
 
                     <Image
                         style={styles.img}
-                        source={require('../../assets/images/header.png')}
+                        source={require('../../assets/images/headerB.png')}
                     />
 
                     <View style={styles.circle} >
@@ -208,9 +208,9 @@ const styles = StyleSheet.create({
     },
 
     img: {
-        height: '490%',
-        width: '105%',
-        top: -4
+        height: '540%',
+        width: '115%',
+        top: 0
     },
 
     circle: {
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
 
         color: "#fff",
         fontFamily: "Candara",
-        fontWeight: "100"
+        fontWeight: "200"
     },
     members: {
         zIndex: 100,
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
         top: "228%",
         left: "42%",
 
-        color: "#000000",
+        color: "#f8f2f2",
         fontFamily: "Candara",
         fontWeight: "100",
         fontSize: 11
