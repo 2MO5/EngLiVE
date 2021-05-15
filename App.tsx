@@ -7,6 +7,8 @@ import useColorScheme from './hooks/useColorScheme';
 import Providers from './navigation';
 import Navigation from './navigation';
 
+import  {createDrawerNavigation} from '@react-navigation/drawer';
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();

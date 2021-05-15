@@ -29,3 +29,9 @@ if the loggedin user has already liked the post then show the full heart else th
 3. Check if the user has liked; check for each comment. Same for likes
 4. If liked set a state for true else false.
  
+
+ -notification component-
+
+ Need a seperate notification component for each segment; friends, university, talent
+
+ Props: image, name, time, icon, deed, type

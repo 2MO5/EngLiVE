@@ -234,8 +234,8 @@ const styles = StyleSheet.create({
     avatar: {
 
         marginTop: '5%',
-        width: '90%',
-        height: '90%',
+        width: '85%',
+        height: '85%',
         borderRadius: 999
     },
 
