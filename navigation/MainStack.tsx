@@ -71,11 +71,11 @@ export default function MainStack() {
           bottom: 10,
           right: 20,
           left: 20,
-          paddingLeft: 40,
-          paddingRight: 40,
-          height: 70,
+          paddingLeft: 70,
+          paddingRight: 70,
+          height: 50,
           borderRadius: 15,
-          backgroundColor: '#F8F9FA',
+          backgroundColor: '#f1f1ee',
           ...styles.theShadows
         }
 
@@ -97,10 +97,12 @@ export default function MainStack() {
               focused ? (
                 <Image
                   source={homeF}
+                  style={{ width: 40, height: 40 }}
                 />
               ) : (
                 <Image
                   source={home}
+                  style={{ width: 40, height: 40 }}
                 />
               )
 
@@ -138,11 +140,13 @@ export default function MainStack() {
 
                 <Image
                   source={notificationF}
+                  style={{ width: 40, height: 40 }}
                 />
 
               ) : (
                 <Image
                   source={notification}
+                  style={{ width: 40, height: 40 }}
                 />
               )
             )
@@ -162,10 +166,12 @@ export default function MainStack() {
               focused ? (
                 <Image
                   source={userF}
+                  style={{ width: 40, height: 40 }}
                 />
               ) : (
                 <Image
                   source={user}
+                  style={{ width: 40, height: 40 }}
                 />
               )
             );
@@ -197,11 +203,11 @@ const TabOneStack = createStackNavigator<HomeNavigatorParamList>();
 
 function HomeNavigator({ navigation, route }) {
 
-  // if (route.state && route.state.index > 0) {
-  //   navigation.setOptions({ tabBarVisible: false });
-  // } else {
-  //   navigation.setOptions({ tabBarVisible: true });
-  // }
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({ tabBarVisible: false });
+  } else {
+    navigation.setOptions({ tabBarVisible: true });
+  }
 
 
   // const TabBarVisibility = (route: string) => {
@@ -210,12 +216,16 @@ function HomeNavigator({ navigation, route }) {
   //     : '';
 
 
-  //   if (routeName === 'AddPostNavigator') {
-  //     return false
-  //   } else {
-  //     return true
-  //   }
+  //   // if (routeName === 'AddPostNavigator') {
+  //   //   return false
+  //   // } else {
+  //   //   return true
+  //   // }
   // }
+
+  // navigation.setOptions({
+  //   tabBarVisible: false
+  // })
 
   return (
     <TabOneStack.Navigator>
@@ -232,7 +242,7 @@ function HomeNavigator({ navigation, route }) {
         name="AddPost"
         component={AddPostScreen}
         options={{
-          //tabBarVisible: false,
+
           headerShown: false,
 
         }}
@@ -248,7 +258,8 @@ function HomeNavigator({ navigation, route }) {
         component={PostDisplayScreen}
         options={{
 
-          headerShown: false
+          headerShown: false,
+
         }}
 
       />
@@ -262,25 +273,7 @@ function HomeNavigator({ navigation, route }) {
   )
 }
 
-const MessageStack = createStackNavigator<MessageNavigatorParamList>();
 
-function MessageNavigator() {
-  return (
-    <MessageStack.Navigator>
-      <MessageStack.Screen
-
-        name="Message"
-        component={MessageScreen}
-        options={{
-          headerShown: false
-        }}
-
-      />
-
-
-    </MessageStack.Navigator>
-  );
-}
 const NotificationStack = createStackNavigator<NotificationNavigatorParamList>();
 
 function NotifcationNavigator() {
