@@ -138,7 +138,7 @@ const CommunityScreen = () => {
 
 
                 {
-                    refreshing ? (<BarIndicator color='#98aef8' size={35} />) : (<Feed />)
+                    refreshing ? (<BarIndicator color='#663d07' size={35} />) : (<Feed />)
                 }
 
 
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     },
     avatar: {
 
-        marginTop: '5%',
+        marginTop: '8%',
         width: '85%',
         height: '85%',
         borderRadius: 999

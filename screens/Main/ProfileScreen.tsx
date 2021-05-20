@@ -4,8 +4,12 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AuthContext } from '../../navigation/AuthProvider'
 import firestore from '@react-native-firebase/firestore';
+import { DrawerActions } from 'react-navigation-drawer'
 
-const ProfileScreen = () => {
+import { DrawerNavigation } from '../../navigation/MainStack';
+
+
+const ProfileScreen = (props) => {
 
     const { user, logout } = useContext(AuthContext)
 
@@ -31,8 +35,25 @@ const ProfileScreen = () => {
         loadingTheUser();
     })
 
+
+    const loadTheDrawer = () => {
+
+        console.log('@39 :  ', props);
+
+        try {
+            props.navigation.openDrawer();
+        } catch (error) {
+            console.log('This error occurred: ', error);
+        }
+
+    }
+
     return (
         <View style={styles.container}>
+
+
+
+
             <LinearGradient
                 style={styles.containerGradient}
                 colors={['#000000', '#68571B', '#1F1A00']}
@@ -51,7 +72,7 @@ const ProfileScreen = () => {
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={{ width: '30%', height: '100%' }}
-                        onPress={() => console.warn('Working!')}
+                        onPress={loadTheDrawer}
                     >
                         <Image
                             source={require('../Main/assets/MenuBars.png')}

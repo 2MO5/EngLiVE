@@ -11,7 +11,8 @@ export type BottomTabParamList = {
   Community: undefined;
   Notifications: undefined;
   Messages: undefined;
-  User: undefined
+  User: undefined;
+  Drawer: undefined;
 };
 
 export type AuthStackParamList = {
@@ -43,6 +44,7 @@ export type NotificationNavigatorParamList = {
 export type ProfileNavigatorParamList = {
   ProfileScreen: undefined;
   Profile: undefined;
+  Drawer: undefined;
 }
 export type AddPostNavigatorParamList = {
   AddPostScreen: undefined;

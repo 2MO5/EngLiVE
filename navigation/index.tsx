@@ -1,8 +1,8 @@
 // import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
-
+import { AppRegistry, ColorSchemeName } from 'react-native';
+import { name as appName } from '../app.json';
 // import AddPostScreen from '../screens/Main/AddPostScreen';
 // import PostDisplayScreen from '../screens/Main/PostDisplayScreen';
 // import NotFoundScreen from '../screens/Main/NotFoundScreen';
@@ -13,6 +13,8 @@ import { ColorSchemeName } from 'react-native';
 // import LinkingConfiguration from './LinkingConfiguration';
 import Routes from './Routes';
 import { AuthProvider } from './AuthProvider';
+import Drawer from './TheDrawer';
+import App from '../App';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -26,6 +28,7 @@ export default function Providers({ colorScheme }: { colorScheme: ColorSchemeNam
 
     <AuthProvider>
       <Routes />
+
     </AuthProvider>
 
 
@@ -52,3 +55,6 @@ export default function Providers({ colorScheme }: { colorScheme: ColorSchemeNam
 
 //   );
 // }
+
+
+//AppRegistry.registerComponent(appName, () => App)

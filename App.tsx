@@ -6,8 +6,9 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Providers from './navigation';
 import Navigation from './navigation';
-
-import  {createDrawerNavigation} from '@react-navigation/drawer';
+import Navigator from './navigation/Drawer'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+//import Drawer from './navigation/Drawer';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -20,6 +21,7 @@ export default function App() {
       <SafeAreaProvider>
         <Providers colorScheme={colorScheme} />
         <StatusBar />
+
       </SafeAreaProvider>
     );
   }

@@ -19,7 +19,7 @@ import FeedDisplayScreen from '../components/Feed'
 import { AddPostNavigatorParamList, BottomTabParamList, RootStackParamList, HomeNavigatorParamList, MessageNavigatorParamList, NotificationNavigatorParamList, ProfileNavigatorParamList, TabTwoParamList, PostDisplayNavigatorParamList } from '../types';
 import { Notifications } from 'expo';
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import home from '../screens/Main/assets/home.png';
 import homeF from '../screens/Main/assets/homeF.png';
@@ -28,11 +28,21 @@ import notificationF from '../screens/Main/assets/notificationF.png';
 import user from '../screens/Main/assets/user.png';
 import userF from '../screens/Main/assets/userF.png';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import FriendsScreen from '../screens/Main/Friends/FriendsScreen';
+import DrawerContent from './DrawerContent';
+
+
+const Drawer = createDrawerNavigator();
+
+
 let image: any;
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 //Identical ones should go with the same stack
 export default function MainStack() {
+
+
 
   // if (route.state && route.state.index > 0) {
   //   navigation.setOptions({ tabBarVisible: false });
@@ -157,11 +167,12 @@ export default function MainStack() {
 
       <BottomTab.Screen
         name="User"
-        component={ProfileNavigator}
+        component={DrawerNavigation}
         options={{
           tabBarIcon: ({ focused }) => {
 
             return (
+
 
               focused ? (
                 <Image
@@ -182,6 +193,8 @@ export default function MainStack() {
       />
 
 
+
+
     </BottomTab.Navigator>
 
 
@@ -190,6 +203,48 @@ export default function MainStack() {
 
   );
 }
+
+//Drawer Navigator
+
+export function DrawerNavigation() {
+
+  return (
+    <Drawer.Navigator
+      initialRouteName="Profile"
+      hideStatusBar={true}
+      edgeWidth={10}
+
+      drawerStyle={{ backgroundColor: "#f3f5f7", zIndex: 100, width: "80%" }}
+      drawerContent={props => <DrawerContent {...props} />}
+
+    >
+      <Drawer.Screen name="Home" component={CommunityScreen} />
+      <Drawer.Screen name="Friends" component={FriendsScreen} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} />
+
+
+
+
+    </Drawer.Navigator>)
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
@@ -296,18 +351,34 @@ function NotifcationNavigator() {
 
 const ProfileStack = createStackNavigator<ProfileNavigatorParamList>();
 
-function ProfileNavigator() {
+function ProfileNavigator({ navigation }) {
+
   return (
+
+
     <ProfileStack.Navigator>
+
+
+
+
       <ProfileStack.Screen
         name="Profile"
         component={ProfileScreen}
+
         options={{
           headerShown: false,
 
         }}
       />
+
+
+
     </ProfileStack.Navigator>
+
+
+
+
+
   );
 }
 
@@ -328,6 +399,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 //   );
 // }
+
 
 
 const styles = StyleSheet.create({

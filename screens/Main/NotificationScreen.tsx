@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         color: '#CEAA29'
     },
     topTextInActive: {
-        fontSize: 19,
+        fontSize: 16,
         color: '#D6DBE6'
     },
 
