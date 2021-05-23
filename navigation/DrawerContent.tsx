@@ -1,18 +1,23 @@
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
 import React, { useContext, useEffect, useState } from 'react'
-import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Container, Content, Footer, Header } from 'native-base'
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from './AuthProvider';
-import { Ionicons } from '@expo/vector-icons';
+import * as Font from 'expo-font';
 
-
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+import navigation from '.';
+;
 const DrawerContent = ({ ...props }) => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [userImage, setUserImage] = useState();
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
+
+    const [fontReady, setFontReady] = useState(false);
+    const [refreshing, setRefreshing] = useState(true);
 
 
     const loadingTheUser = async () => {
@@ -29,10 +34,23 @@ const DrawerContent = ({ ...props }) => {
             })
     }
 
+    const loadingTheFonts = async () => {
+        await Font.loadAsync({
+            'Futura': require('../assets/fonts/FutuMd.ttf')
+        });
+        setFontReady(true);
+        setRefreshing(false);
+    }
+
     useEffect(() => {
         loadingTheUser();
     })
 
+
+    let height = Dimensions.get('window').height;
+    let width = Dimensions.get('window').width;
+
+    const resolution = (height / width);
 
     return (
 
@@ -42,8 +60,8 @@ const DrawerContent = ({ ...props }) => {
 
                 style={{ flexDirection: 'row' }}>
                 <ImageBackground
-                    source={require('../screens/Main/assets/DrawerHeader.png')}
-                    style={{ width: '103.3%', height: '135%', marginLeft: -10, marginTop: -5 }}
+                    source={require('../screens/Main/assets/DH1.png')}
+                    style={{ width: '103.3%', height: '133%', marginLeft: -10, marginTop: -5 }}
                 >
 
                     <View style={styles.circle} >
@@ -58,30 +76,46 @@ const DrawerContent = ({ ...props }) => {
                         />
                     </View>
 
-                    <View style={{ position: 'absolute', left: '40%', top: '40%' }}>
-                        <Text style={{ fontSize: 22, textTransform: 'uppercase', color: '#463071', fontWeight: 'bold' }}> {firstName} {lastName} </Text>
-                        <Text style={{ fontSize: 12, marginLeft: 5, color: '#876B67', textTransform: 'uppercase', fontWeight: '100' }}> Delhi, India </Text>
+                    <View style={{ position: 'absolute', left: '42%', top: '45%' }}>
+                        <Text style={{ fontSize: resolution / .11, textTransform: 'uppercase', color: '#fff', fontFamily: 'Futura', fontWeight: '400', letterSpacing: resolution / .8 }}> {firstName} {lastName} </Text>
+                        <Text style={{ fontSize: resolution / .16, marginLeft: 13, color: '#F8E5A4', textTransform: 'uppercase', fontFamily: 'Futura', fontWeight: '100' }}> Delhi, India </Text>
+                    </View>
+
+                    <View>
+                        <Ionicons
+                            style={{ position: 'absolute', left: '92%', marginTop: resolution / .049 }}
+                            name="notifications"
+                            size={25}
+                            color="#fdd18e"
+                            onPress={() => props.navigation.navigate('Notifications')}
+                        />
                     </View>
 
                 </ImageBackground>
             </Header>
-            <Content />
-            <Footer />
-
-            <DrawerContentScrollView {...props} >
+            <Content style={{ marginTop: height / 8 }}>
 
 
-                <DrawerItemList {...props} />
-                <DrawerItem
-                    label="Home"
-                    icon={({ focused }) => {
-                        <Ionicons name="ios-home-outline" size={24} color="black" />
-
-                    }}
-                />
+                <DrawerContentScrollView {...props} >
 
 
-            </DrawerContentScrollView>
+                    <DrawerItemList {...props} activeTintColor={'#b14f22'} labelStyle={{ color: '#68571B', letterSpacing: resolution / .35, fontFamily: 'Futura', textTransform: 'uppercase', fontWeight: '400', fontSize: resolution / .11, marginLeft: 20, marginTop: resolution / .2 }} />
+
+
+
+                </DrawerContentScrollView>
+            </Content>
+            <View style={{ width: '100%', height: '.13%', backgroundColor: '#dfb8b8', marginBottom: resolution / .040 }}></View>
+
+            <TouchableOpacity
+                onPress={() => logout()}
+                style={{ marginBottom: resolution / 0.025, marginLeft: resolution / 0.045, flexDirection: 'row', justifyContent: 'space-around', width: '50%', backgroundColor: 'transparent' }}>
+                <AntDesign name="logout" size={24} color="#c7c0b4" style={{ transform: [{ rotateY: '180deg' }] }} />
+                <Text style={{ textTransform: 'uppercase', color: '#b1a771', fontFamily: 'Futura', fontWeight: '400', letterSpacing: resolution / .8, marginLeft: resolution / .05 }}>Log Out</Text>
+            </TouchableOpacity>
+
+
+
         </Container>
 
     )
@@ -104,7 +138,7 @@ const styles = StyleSheet.create({
     // },
     circle: {
         backgroundColor: 'transparent',
-        borderColor: '#523d03',
+        borderColor: '#ffffff',
         borderWidth: 1.5,
         width: '20%',
         height: '85%',

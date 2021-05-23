@@ -45,7 +45,17 @@ export type ProfileNavigatorParamList = {
   ProfileScreen: undefined;
   Profile: undefined;
   Drawer: undefined;
+
+  Friends: undefined;
 }
+
+export type FriendNavigatorParamList = {
+  FriendScreen: undefined;
+  NewFriends: undefined;
+  ExistingFriends: undefined;
+
+}
+
 export type AddPostNavigatorParamList = {
   AddPostScreen: undefined;
   AddPost: undefined;

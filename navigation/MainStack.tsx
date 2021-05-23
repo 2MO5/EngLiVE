@@ -1,6 +1,6 @@
 import { Ionicons, Octicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
@@ -16,10 +16,10 @@ import AddPostScreen from '../screens/Main/AddPostScreen';
 import FeedDisplayScreen from '../components/Feed'
 
 
-import { AddPostNavigatorParamList, BottomTabParamList, RootStackParamList, HomeNavigatorParamList, MessageNavigatorParamList, NotificationNavigatorParamList, ProfileNavigatorParamList, TabTwoParamList, PostDisplayNavigatorParamList } from '../types';
+import { AddPostNavigatorParamList, BottomTabParamList, RootStackParamList, HomeNavigatorParamList, MessageNavigatorParamList, NotificationNavigatorParamList, ProfileNavigatorParamList, TabTwoParamList, PostDisplayNavigatorParamList, FriendNavigatorParamList } from '../types';
 import { Notifications } from 'expo';
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
-import { Image, StyleSheet, View } from 'react-native';
+import { Button, Dimensions, Image, StyleSheet, View } from 'react-native';
 
 import home from '../screens/Main/assets/home.png';
 import homeF from '../screens/Main/assets/homeF.png';
@@ -29,9 +29,16 @@ import user from '../screens/Main/assets/user.png';
 import userF from '../screens/Main/assets/userF.png';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import FriendsScreen from '../screens/Main/Friends/FriendsScreen';
-import DrawerContent from './DrawerContent';
 
+import DrawerContent from './DrawerContent';
+import UniversityScreen from '../screens/Main/University/UniversityScreen';
+import TalentScreen from '../screens/Main/Talent/TalentScreen';
+import NewFriends from '../screens/Main/Friends/New/NewFriends';
+import ExistingFriends from '../screens/Main/Friends/Existing/ExistingFriends';
+import FriendsScreen from '../screens/Main/Friends/FriendsScreen';
+
+import { AntDesign } from '@expo/vector-icons';
+import navigation from '.';
 
 const Drawer = createDrawerNavigator();
 
@@ -85,7 +92,7 @@ export default function MainStack() {
           paddingRight: 70,
           height: 50,
           borderRadius: 15,
-          backgroundColor: '#f1f1ee',
+          backgroundColor: '#f7f6f5',
           ...styles.theShadows
         }
 
@@ -168,7 +175,11 @@ export default function MainStack() {
       <BottomTab.Screen
         name="User"
         component={DrawerNavigation}
+
         options={{
+          tabBarVisible: false,
+
+
           tabBarIcon: ({ focused }) => {
 
             return (
@@ -208,19 +219,132 @@ export default function MainStack() {
 
 export function DrawerNavigation() {
 
+  let height: number, width: number, resolution: number;
+
+  height = Dimensions.get('window').height;
+  width = Dimensions.get('window').width;
+  resolution = height / width;
+
   return (
     <Drawer.Navigator
       initialRouteName="Profile"
       hideStatusBar={true}
       edgeWidth={10}
 
-      drawerStyle={{ backgroundColor: "#f3f5f7", zIndex: 100, width: "80%" }}
+      drawerStyle={{ backgroundColor: "#f3f5f7", zIndex: 100, width: "85%", }}
       drawerContent={props => <DrawerContent {...props} />}
 
     >
-      <Drawer.Screen name="Home" component={CommunityScreen} />
-      <Drawer.Screen name="Friends" component={FriendsScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
+      <Drawer.Screen
+        name="Community"
+        component={CommunityScreen}
+        options={{
+          drawerIcon: config =>
+
+            config.focused ? (
+              <Image
+                source={require('../screens/Main/assets/homeIconF.png')}
+                style={{ width: resolution / .045, height: resolution / .045, marginLeft: resolution / .0706, }}
+              />
+            ) : (
+              <Image
+                source={require('../screens/Main/assets/homeIcon.png')}
+                style={{ width: resolution / .045, height: resolution / .035, marginLeft: resolution / .0706, }}
+              />
+            )
+
+
+        }}
+
+      />
+      <Drawer.Screen
+        name="Friends"
+        component={FriendsScreen}
+        options={{
+          drawerIcon: config =>
+
+            config.focused ? (
+              <Image
+                source={require('../screens/Main/assets/friendIconF.png')}
+                style={{ width: resolution / .055, height: 25, marginLeft: resolution / .06, marginTop: resolution / .28 }}
+              />
+            ) : (
+              <Image
+                source={require('../screens/Main/assets/friendIcon.png')}
+                style={{ width: resolution / .055, height: 25, marginLeft: resolution / .06, marginTop: resolution / .28 }}
+              />
+            )
+
+
+        }}
+
+      />
+
+      <Drawer.Screen
+        name="University"
+        component={UniversityScreen}
+        options={{
+          drawerIcon: config =>
+
+            config.focused ? (
+              <Image
+                source={require('../screens/Main/assets/uniIconF.png')}
+                style={{ width: resolution / .035, height: 28, marginRight: -resolution / .19, marginLeft: resolution / .09, marginTop: resolution / .28 }}
+              />
+            ) : (
+              <Image
+                source={require('../screens/Main/assets/uniIcon.png')}
+                style={{ width: resolution / .055, height: 25, marginLeft: resolution / .06, marginTop: resolution / .28 }}
+              />
+            )
+
+
+        }}
+
+      />
+      <Drawer.Screen
+        name="Talent"
+        component={TalentScreen}
+        options={{
+          drawerIcon: config =>
+
+            config.focused ? (
+              <Image
+                source={require('../screens/Main/assets/talentIconF.png')}
+                style={{ width: resolution / .039, height: 42, marginLeft: resolution / .07, marginTop: resolution / .39 }}
+              />
+            ) : (
+              <Image
+                source={require('../screens/Main/assets/talentIcon.png')}
+                style={{ width: resolution / .055, height: 38, marginLeft: resolution / .07, marginTop: resolution / .39 }}
+              />
+            )
+
+        }}
+
+      />
+
+      <Drawer.Screen
+        name="Profile"
+        component={ProfileNavigator}
+
+        options={{
+          drawerIcon: config =>
+
+            config.focused ? (
+              <Image
+                source={require('../screens/Main/assets/profileIconf.png')}
+                style={{ width: resolution / .055, height: 45, marginLeft: resolution / .060, marginTop: resolution / .28 }}
+              />
+            ) : (
+              <Image
+                source={require('../screens/Main/assets/profileIcon.png')}
+                style={{ width: resolution / .055, height: 25, marginLeft: resolution / .060, marginTop: resolution / .28 }}
+              />
+
+            )
+        }}
+      />
 
 
 
@@ -368,7 +492,53 @@ function ProfileNavigator({ navigation }) {
         options={{
           headerShown: false,
 
+
         }}
+      />
+
+      {/* <==Friends==> */}
+
+      <FriendStack.Screen
+        name="FriendScreen"
+        component={FriendsScreen}
+
+        options={{
+          headerShown: false,
+
+
+        }}
+      />
+
+
+
+      <FriendStack.Screen
+        name="NewFriends"
+        component={NewFriends}
+        options={{
+
+          headerShown: false,
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+
+        }}
+      />
+
+      <FriendStack.Screen
+        name="ExistingFriends"
+        component={ExistingFriends}
+        options={{
+
+          headerShown: false,
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.goBack('FriendScreen')} />
+
+          )
+        }}
+
       />
 
 
@@ -380,6 +550,60 @@ function ProfileNavigator({ navigation }) {
 
 
   );
+}
+
+
+//Friends stack
+
+const FriendStack = createStackNavigator<FriendNavigatorParamList>();
+
+
+function FriendNavigator({ navigation }) {
+
+  return (
+    <FriendStack.Navigator>
+
+      <FriendStack.Screen
+        name="FriendScreen"
+        component={FriendsScreen}
+
+      />
+      <FriendStack.Screen
+        name="NewFriends"
+        component={NewFriends}
+
+        options={{
+
+          headerShown: false,
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+
+        }}
+
+      />s
+      <FriendStack.Screen
+        name="ExistingFriends"
+        component={ExistingFriends}
+        options={{
+
+          headerShown: false,
+
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+        }}
+      />
+
+
+
+    </FriendStack.Navigator>
+  )
+
 }
 
 const Stack = createStackNavigator<RootStackParamList>();
