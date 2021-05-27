@@ -26,6 +26,7 @@ const SignUpScreen = () => {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email, setEmail] = useState();
+    const [country, setCountry] = useState('');
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
@@ -185,7 +186,7 @@ const SignUpScreen = () => {
         else {
 
             const avatar = await imageUpload();
-            register(email, password, avatar, firstName, lastName);
+            register(email, password, avatar, firstName, lastName, country);
         }
     }
 
@@ -363,6 +364,20 @@ const SignUpScreen = () => {
                                     value={email}
                                     onChangeText={(userEmail: any) => setEmail(userEmail)}
                                     placeholder="Email Address"
+                                    style={styles.input}
+
+
+                                    placeholderTextColor={'#DBC98A'}
+                                />
+                            </View>
+                            <View style={styles.email}>
+                                <Image
+                                    source={require('./assets/location.png')}
+                                />
+                                <TextInput
+                                    value={country}
+                                    onChangeText={(userLocation: any) => setCountry(userLocation)}
+                                    placeholder="Country"
                                     style={styles.input}
 
 

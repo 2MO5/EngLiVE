@@ -10,10 +10,12 @@ import circle from '../../Main/assets/friendsCircle.png'
 import globe from '../../Main/assets/friendsGlobe.png'
 import { AuthContext } from '../../../../navigation/AuthProvider';
 import Friend from '../../../../components/Friend/New';
+import FeedFriendNew from '../../../../components/Friend/New/FeedFriendNew';
 
 const NewFriends = (props) => {
 
     const [userImage, setUserImage] = useState();
+
 
     const { user } = useContext(AuthContext);
 
@@ -44,6 +46,8 @@ const NewFriends = (props) => {
                 setUserImage(userImage);
 
             })
+
+
     }
 
     useEffect(() => {
@@ -89,10 +93,7 @@ const NewFriends = (props) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.containerMid}>
-                <Friend />
-                <Friend />
-                <Friend />
-                <Friend />
+                <FeedFriendNew />
             </View>
             <View style={styles.containerBottom}>
                 <Image
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     containerTop: {
         width: '100%',
         height: '20%',
-        //backgroundColor: '#c41'
+
 
     },
     containerMid: {

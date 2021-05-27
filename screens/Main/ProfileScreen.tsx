@@ -16,6 +16,7 @@ const ProfileScreen = (props) => {
     const [userImage, setUserImage] = useState();
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
+    const [country, setCountry] = useState();
 
     const loadingTheUser = async () => {
         firestore()
@@ -23,11 +24,12 @@ const ProfileScreen = (props) => {
             .doc(user.uid)
             .onSnapshot(documentSnapshot => {
 
-                const { userImage, firstName, lastName } = documentSnapshot.data();
+                const { userImage, firstName, lastName, country } = documentSnapshot.data();
 
                 setUserImage(userImage);
                 setFirstName(firstName);
                 setLastName(lastName);
+                setCountry(country);
             })
     }
 
@@ -96,7 +98,7 @@ const ProfileScreen = (props) => {
 
                     <View style={styles.circleUserDetails}>
                         <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#fff', marginTop: 7 }}> {firstName} {lastName}</Text>
-                        <Text style={{ fontSize: 15, marginLeft: '5%', fontWeight: '100', color: '#BBB08E', marginTop: 10 }}> From China</Text>
+                        <Text style={{ fontSize: 15, marginLeft: '5%', fontWeight: '100', color: '#BBB08E', marginTop: 10 }}> From {country}</Text>
                     </View>
 
                     <View style={styles.circleDetails}>

@@ -53,7 +53,8 @@ export type FriendNavigatorParamList = {
   FriendScreen: undefined;
   NewFriends: undefined;
   ExistingFriends: undefined;
-
+  FriendRequests: undefined;
+  FriendProfile: undefined;
 }
 
 export type AddPostNavigatorParamList = {
@@ -137,6 +138,21 @@ export type PostType = {
 
 
 
+}
+
+export type NewFriendType = {
+  id: string,
+  //userId: string,
+  image: string,
+  name: string,
+}
+export type FriendExistingType = {
+  id: string,
+  //userId: string,
+  userImage: string,
+  firstName: string,
+  lastName: string,
+  timestamp: string,
 }
 
 export type CommentType = {

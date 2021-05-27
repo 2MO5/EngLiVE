@@ -361,6 +361,8 @@ const Comments = ({ id, comments, state }) => {
                     const { comment, likes, theLikedUsers, id } = commentsArray[0];
 
 
+                    //Breaking it down and putting it backup
+
                     console.log('@228 ', userId);
                     commentsArray.forEach(doc => {
 
@@ -481,7 +483,7 @@ const Comments = ({ id, comments, state }) => {
                                 for (let i = 0; i < likedUsers.length; i++) {
 
                                     if (likedUsers[i] = user.uid) {
-                                        likedUsers.splice(i, 1);
+                                        likedUsers.splice(i, 1); //find the place chop one from that place(simply that element)
                                         console.log('@474: Splice is done');
                                     }
                                 }

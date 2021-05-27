@@ -9,7 +9,8 @@ import circle from '../../Main/assets/circleExis.png'
 
 import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../../../../navigation/AuthProvider';
-import FriendExisting from '../../../../components/Friend/Existing';
+
+import FeedFriendExis from '../../../../components/Friend/Existing/FeedFriendExis';
 
 const ExistingFriends = (props) => {
 
@@ -83,13 +84,10 @@ const ExistingFriends = (props) => {
             </View>
 
             <View style={styles.containerMid}>
-                <FriendExisting />
-                <FriendExisting />
-                <FriendExisting />
-                <FriendExisting />
+                <FeedFriendExis theProps={props} />
             </View>
             <View style={styles.containerBottom}>
-                <Image source={Design} style={{ position: 'absolute', bottom: resolution * -131, right: resolution * -65 }} />
+                <Image source={Design} style={{ position: 'absolute', bottom: resolution * -131, right: resolution * -65, zIndex: -10000 }} />
             </View>
 
         </View>

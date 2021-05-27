@@ -1,32 +1,52 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import navigation from '../../../navigation';
+import { FriendExistingType } from '../../../types';
 
-const FriendExisting = () => {
+export type FriendExistingProps = {
+    friend: FriendExistingType
+}
+
+const FriendExisting = ({ friend, props }: FriendExistingProps) => {
 
     let width, height, resolution;
+    let image: string, firstName: string, lastName: string, timestamp: string
 
     width = Dimensions.get('window').width;
     height = Dimensions.get('window').height;
 
     resolution = height / width;
+
+    image = friend.userImage
+    firstName = friend.firstName
+    lastName = friend.lastName
+    timestamp = friend.timestamp
+
+    useEffect(() => {
+        console.log('@26: first name is', firstName, 'last name is', lastName, 'of ', image);
+    }, [])
+
     return (
         <View style={styles.container}>
 
             <View style={styles.containerLeft}>
                 <View style={styles.leftCircle}>
                     <Image
-                        source={{ uri: 'https://media.istockphoto.com/photos/happy-smiling-man-looking-away-picture-id1158245623?k=6&m=1158245623&s=612x612&w=0&h=y0LbpRFMHMj_9YC_kpKvLYcijEunxP27KyjXBrDHcFg=' }}
+                        source={{ uri: image }}
                         style={styles.leftAvatar}
                     />
                 </View>
             </View>
             <View style={styles.containerRight}>
-                <Text style={{ fontFamily: 'Roboto', fontSize: resolution / .10, fontWeight: 'bold', position: 'absolute', top: resolution / .13, left: resolution / .05 }} >Jake Jack</Text>
-                <TouchableOpacity activeOpacity={0.8}>
+                <Text style={{ fontFamily: 'Roboto', fontSize: resolution / .10, fontWeight: 'bold', position: 'absolute', top: '-100%', left: '16%' }} >{firstName} {lastName}</Text>
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => props.navigation.navigate('FriendProfile', { id: friend.id })}
+                >
                     <Image
                         source={require('../../../screens/Main/assets/view.png')}
-                        style={{ marginTop: resolution / .08, }}
+                        style={{ marginTop: '10%', }}
                     />
                 </TouchableOpacity>
             </View>
@@ -47,7 +67,7 @@ const styles = StyleSheet.create({
 
         paddingLeft: '10%',
         paddingRight: '10%',
-        marginBottom: '-2%',
+        marginBottom: 35,
 
     },
     containerLeft: {
@@ -63,11 +83,14 @@ const styles = StyleSheet.create({
     },
 
     leftCircle: {
-        width: '70%',
-        height: '70%',
+        width: 75,
+        height: 75,
         borderRadius: 100,
         borderColor: '#AA9138',
-        borderWidth: 1.5
+        borderWidth: 1.5,
+
+        marginBottom: '15%',
+        marginLeft: '20%'
     },
 
     leftAvatar: {
@@ -77,7 +100,7 @@ const styles = StyleSheet.create({
 
         position: 'absolute',
         top: 6,
-        left: 7,
+        left: 8,
     },
     containerRight: {
 
@@ -86,6 +109,7 @@ const styles = StyleSheet.create({
 
         justifyContent: 'center',
         alignItems: 'center',
+
     },
 
 })

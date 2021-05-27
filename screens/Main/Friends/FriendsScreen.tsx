@@ -14,6 +14,8 @@ import * as Font from 'expo-font';
 import { openDrawer } from 'react-navigation-drawer/lib/typescript/src/routers/DrawerActions';
 import { AuthContext } from '../../../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
+import FriendRequests from './FriendRequests';
+import FriendNotification from '../../../components/FriendNotification';
 
 const FriendsScreen = (props) => {
 
@@ -30,6 +32,7 @@ const FriendsScreen = (props) => {
 
 
     const loadingTheUser = async () => {
+        console.log('@33: ', user.uid);
         firestore()
             .collection('users')
             .doc(user.uid)
@@ -91,7 +94,7 @@ const FriendsScreen = (props) => {
                 </TouchableOpacity>
 
                 <Image
-                    source={dotTop}
+                    source={dotBottom}
                     style={{
                         // width: '25%',
                         // height: '90%',
@@ -103,14 +106,20 @@ const FriendsScreen = (props) => {
 
             </View>
             <View style={styles.containerMid}>
+                {/* <TouchableOpacity
+                    onPress={() => props.navigation.navigate('FriendRequests')}
+                >
+                    <FriendNotification />
+                </TouchableOpacity> */}
+                <FriendNotification onPress={() => props.navigation.navigate('FriendRequests')} />
                 <Image
                     source={circle1}
                     style={{
                         width: resolution + (resolution * 120) + (resolution * 40),
-                        height: (resolution * 10) + (resolution * 150),
+                        height: (resolution * 20) + (resolution * 150),
                         position: 'absolute',
                         right: (resolution * 40),
-                        top: (resolution * 10 + resolution * 25 - resolution * 54)
+                        top: (resolution * 10 + resolution * 25 - resolution * 70)
                     }}
                 />
 
@@ -124,7 +133,7 @@ const FriendsScreen = (props) => {
 
                         position: 'absolute',
                         left: resolution * 87,
-                        top: resolution * 10,
+                        top: resolution * 1,
                     }}
                 />
                 <Text
@@ -181,7 +190,7 @@ const FriendsScreen = (props) => {
                     <Image source={existingFriends} />
                 </TouchableOpacity>
                 <Image
-                    source={dotTop}
+                    source={dotBottom}
                     style={{ marginBottom: -resolution * 25, marginLeft: -resolution * 40 }}
                 />
 

@@ -474,7 +474,7 @@ const PostDisplayScreen = ({ route }) => {
         //     //3.set that array to state varibles
         //     //4.access that state varible in the flatlist
 
-
+        // use documentSnapshot for one document
 
         //getting the data from db
         await firestore()

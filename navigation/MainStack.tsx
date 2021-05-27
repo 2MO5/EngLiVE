@@ -39,6 +39,8 @@ import FriendsScreen from '../screens/Main/Friends/FriendsScreen';
 
 import { AntDesign } from '@expo/vector-icons';
 import navigation from '.';
+import FriendRequests from '../screens/Main/Friends/FriendRequests';
+import FriendProfile from '../screens/Main/Friends/FriendProfile';
 
 const Drawer = createDrawerNavigator();
 
@@ -541,7 +543,35 @@ function ProfileNavigator({ navigation }) {
 
       />
 
+      <FriendStack.Screen
+        name="FriendRequests"
+        component={FriendRequests}
+        options={{
 
+          headerShown: false,
+
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+        }}
+      />
+
+      <FriendStack.Screen
+        name="FriendProfile"
+        component={FriendProfile}
+        options={{
+
+          headerShown: false,
+
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+        }}
+      />
 
     </ProfileStack.Navigator>
 
@@ -587,6 +617,34 @@ function FriendNavigator({ navigation }) {
       <FriendStack.Screen
         name="ExistingFriends"
         component={ExistingFriends}
+        options={{
+
+          headerShown: false,
+
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+        }}
+      />
+      <FriendStack.Screen
+        name="FriendRequests"
+        component={FriendRequests}
+        options={{
+
+          headerShown: false,
+
+          headerLeft: () => (
+
+            <HeaderBackButton onPress={() => navigation.navigate('FriendScreen')} />
+
+          )
+        }}
+      />
+      <FriendStack.Screen
+        name="FriendProfile"
+        component={FriendProfile}
         options={{
 
           headerShown: false,

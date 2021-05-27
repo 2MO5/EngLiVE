@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
                 setUser,
 
 
-                register: async (email: string, password: string, avatar: string, firstName: string, lastName: string) => {
+                register: async (email: string, password: string, avatar: string, firstName: string, lastName: string, country: string, friends: object, receivedRequests: object, sentRequests: object) => {
                     try {
                         console.log(user)
                         console.log(email)
@@ -33,9 +33,14 @@ export const AuthProvider = ({ children }) => {
                                     .set({
                                         firstName: firstName,
                                         lastName: lastName,
+                                        country: country,
                                         email: email,
                                         createdAt: firestore.Timestamp.fromDate(new Date()),
-                                        userImage: avatar
+                                        userImage: avatar,
+                                        friends: [],
+                                        receivedRequests: [],
+                                        sentRequests: [],
+
                                     })
                             }).catch((e) => {
                                 console.log('user was not added due to: ', e);
@@ -63,11 +68,12 @@ export const AuthProvider = ({ children }) => {
 
                 login: async (email: string, password: string) => {
 
+                    console.log('Email: ', email, 'Password: ', password);
                     try {
                         console.log('LOGIN IN with firebase');
                         await auth().signInWithEmailAndPassword(email, password);
                     } catch (error) {
-                        console.log(error);
+                        console.log('This error occurred: ', error);
                         alert(error);
                     }
                 },
